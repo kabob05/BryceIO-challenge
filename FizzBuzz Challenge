@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class main {
+	//initializing my variables
+	static String[] Fizz = new String[1];
+	static String[] Buzz = new String[1];
+	static int Input = 0;
+	static int Temp = 0;
+	static int Tries = 0;
+	static Scanner sc;
+	
+	public static void main(String[] args) {
+		//creating the scanner.
+		sc = new Scanner(System.in);
+		//assigning the zero value of each of the arrays to Fizz and Buzz respectively. Note that they only have one element each.
+		Fizz[0] = "Fizz";
+		Buzz[0] = "Buzz";
+		//calling FizzBuzz for the first time to start the loop.
+		fizzbuzz();
+	}
+	
+	
+	private static void fizzbuzz() {
+		//setting the variable used back to 0.
+		Tries = 0;
+		
+		//getting user Input.
+		System.out.print("Please input a number: ");
+		Input = sc.nextInt();
+		
+		//trying to divide 5 by Input so that if Input is 0 it throws an error.
+		try {
+			Temp = 5 / Input;
+		}catch(Exception e) {
+			//assuming it throws an error it is caught telling us that the Input is 0 and thus ending the program.
+			System.out.print("Ending Program.");
+			sc.close();
+			System.exit(0);
+		}
+		
+		//trying to print the element of the array but as only the zero element exists anything outside of zero for the reminder will error out. Assuming it does that successfully increment tries.
+		try{
+			System.out.print(Fizz[(Input % 3)]);
+			Tries++;
+		}catch(Exception e) {}
+		try{
+			System.out.print(Buzz[(Input % 5)]);
+			Tries++;
+		}catch(Exception e) {}
+		
+		//if Tries is still 0 after both of those checks Input is not divisible by 3 and 5 so dividing 5 by Tries it is possible to test if it is still 0.
+		try{
+			Temp = 5 / Tries;
+		}catch(Exception e) {
+			//if Tries is still 0, throwing the error, print the Inputed number.
+			System.out.print(Input);
+		}
+		
+		
+		System.out.println();
+		
+		//once it has done this create another version of this code do it again until 0 is Inputed. If used long enough you might run out of memory and crash but meh, don't care.
+		fizzbuzz();
+	}
+}
