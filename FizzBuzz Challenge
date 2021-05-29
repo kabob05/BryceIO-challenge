@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class main {
-	//initializing my variables
+	//initializing all variables
 	static String[] Fizz = new String[1];
 	static String[] Buzz = new String[1];
 	static int Input = 0;
